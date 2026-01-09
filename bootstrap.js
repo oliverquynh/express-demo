@@ -2,10 +2,10 @@ import express from 'express'
 import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url';
-import { connect } from './app/lib/db.js'
 
-export function createApp() {
-    // Load environment variables if needed.
+import { router } from './routes.js'
+
+function loadEnvironmentVariables() {
     if (process.env.ENV_LOADED !== '1') {
         process.env.ENV_LOADED = '1';
 
@@ -18,33 +18,15 @@ export function createApp() {
             dotenv.config({ path: path.join(currentDir, '/.env') })
         }
     }
+}
+
+export function createApp() {
+    // Load environment variables if needed.
+    loadEnvironmentVariables();
 
     const app = express()
 
-    app.get('/up', async (req, res) => {
-        try {
-            await connect();
-
-            res.send('OK');
-        } catch (err) {
-            res.status(500).send('NOT OK');
-        }
-    })
-
-    app.get('/api/quotes', async (req, res) => {
-        const db = await connect();
-        const result = await db.query('SELECT * from quotes');
-
-        return res.json({
-            data: result.rows,
-        })
-    })
-
-    app.get('/', (req, res) => {
-        res.json({
-            message: 'Hello, World!',
-        })
-    })
+    app.use('/', router)
 
     return app
 }
