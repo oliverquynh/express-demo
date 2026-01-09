@@ -33,7 +33,7 @@ npm install
 - Run migrations
 
 ```bash
-npm run migrate
+DATABASE_URL='postgres://postgres_user:password123@localhost:5401/postgres_db' npm run migrate up
 ```
 
 - Start node server
@@ -43,6 +43,12 @@ npm start # http://localhost:3000
 ```
 
 ## Development
+
+Use local PostgreSQL powered by Docker
+
+```bash
+docker compose -f docker/docker-compose.yml up -d
+```
 
 Run all tests
 

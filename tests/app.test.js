@@ -1,6 +1,6 @@
 // app.test.js
 import request from 'supertest'
-import { createApp } from '../app.js'
+import { createApp } from '../bootstrap.js'
 
 describe("GET /", () => {
   it("should greet the world", async () => {
