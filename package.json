@@ -1,0 +1,20 @@
+{
+  "name": "@oliverquynh/express-demo",
+  "private": true,
+  "description": "Express Demo",
+  "homepage": "https://github.com/oliverquynh/express-demo#readme",
+  "bugs": {
+    "url": "https://github.com/oliverquynh/express-demo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/oliverquynh/express-demo.git"
+  },
+  "license": "MIT",
+  "author": "Oliver Quynh <contact@oliverquynh.com>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
