@@ -16,7 +16,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "migrate": "node-pg-migrate",
+    "migrate": "node-pg-migrate --config=pg.config.js",
     "start": "node server.js",
     "test": "jest"
   },
