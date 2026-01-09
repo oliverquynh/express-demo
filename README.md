@@ -41,3 +41,11 @@ npm run migrate
 ```bash
 npm start # http://localhost:3000
 ```
+
+## Development
+
+Run all tests
+
+```bash
+NODE_OPTIONS=--experimental-vm-modules jest
+```
