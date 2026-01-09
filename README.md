@@ -14,10 +14,9 @@ docker network create --subnet=172.18.0.0/16 demo_net
 docker run \
     -e POSTGRES_PASSWORD=password123 \
     -e POSTGRES_USER=postgres_user \
-    -e POSTGRES_DATABASE=postgres_db \
+    -e POSTGRES_DB=postgres_db \
     --net demo_net \
     --ip 172.18.0.5 \
-    --restart always \
     --detach \
     postgres:18-alpine
 ```
