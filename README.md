@@ -6,7 +6,7 @@ Express Demo
 
 ## Installation
 
-PostgreSQL must be ready first.
+PostgreSQL must be ready first. E.g, we can run a PostgreSQL using Docker.
 
 ```bash
 docker network create --subnet=172.18.0.0/16 demo_net
@@ -20,8 +20,6 @@ docker run \
     --detach \
     postgres:18-alpine
 ```
-
-
 
 - Clone this repository
 
@@ -48,7 +46,7 @@ npm install
 - Run migrations
 
 ```bash
-DATABASE_URL='postgres://postgres_user:password123@localhost:5401/postgres_db' npm run migrate up
+npm run migrate up
 ```
 
 - Start node server

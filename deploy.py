@@ -41,6 +41,8 @@ app.bind('bin/npm', bin_npm)
 
 @app.task(name='deploy:pg', desc='Create the PG config file')
 def deploy_pg(c: Context):
+    c.cd('{{release_path}}')
+
     if c.test("[ -f pg.config.json ]"):
         c.info("The pg.config.json file already exists ({{release_path}}/pg.config.json)")
         return
@@ -51,8 +53,8 @@ def deploy_pg(c: Context):
         )
         return
 
-    c.cd('{{release_path}}')
     c.run("cp pg.config.json.example pg.config.json")
+
     c.info("The pg.config.json file is created ({{release_path}}/pg.config.json)")
 
 @app.task(name="npm:ci", desc="Clean install node packages")
