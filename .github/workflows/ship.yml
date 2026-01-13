@@ -1,0 +1,29 @@
+name: Ship
+
+on:
+  push:
+    branches: ['main']
+
+concurrency: test_environment
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: test
+      url: https://express-demo.oliverquynh.com
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      - uses: hapideploy/action@v1
+        with:
+          host: ${{ secrets.HAPI_HOST_IP }}
+          user: ${{ secrets.HAPI_SSH_USER }}
+          identity-key: ${{ secrets.HAPI_SSH_KEY }}
+
+      - name: Run the deploy command
+        run: hapi deploy --stage=test --debug --config=node_version=24.12.0
