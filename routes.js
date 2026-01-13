@@ -19,6 +19,12 @@ router.get('/hello', async (req, res) => {
     })
 })
 
+router.get('/hi', async (req, res) => {
+    res.json({
+        message: 'Hi (deployed manually)',
+    })
+})
+
 router.get('/api/quotes', async (req, res) => {
     const db = await connect();
     const result = await db.query('SELECT * from quotes');
